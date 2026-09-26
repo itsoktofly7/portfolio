@@ -1,0 +1,495 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Клепов Данил — Инженер-конструктор & Разработчик</title>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
+    <style>
+        :root {
+            --bg-color: #0f172a;
+            --card-bg: #1e293b;
+            --accent-color: #38bdf8;
+            --accent-hover: #0284c7;
+            --text-color: #f8fafc;
+            --text-muted: #94a3b8;
+            --border-color: #334155;
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+            font-family: 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+        }
+
+        body {
+            background-color: var(--bg-color);
+            color: var(--text-color);
+            line-height: 1.6;
+            padding-bottom: 60px;
+        }
+
+        a {
+            color: var(--accent-color);
+            text-decoration: none;
+            transition: color 0.2s;
+        }
+
+        a:hover {
+            color: var(--accent-hover);
+        }
+
+        header {
+            background: linear-gradient(135deg, #0f172a 0%, #1e293b 100%);
+            border-bottom: 1px solid var(--border-color);
+            padding: 50px 20px;
+            text-align: center;
+            position: relative;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        /* Стиль фотографии профиля */
+        .profile-avatar {
+            width: 250px;
+            height: 250px;
+            border-radius: 50%;
+            object-fit: cover;
+            border: 4px solid var(--accent-color);
+            box-shadow: 0 0 20px rgba(56, 189, 248, 0.3);
+            margin-bottom: 20px;
+        }
+
+        .profile-title {
+            font-size: 2.5rem;
+            margin-bottom: 10px;
+            color: #fff;
+        }
+
+        .profile-subtitle {
+            font-size: 1.2rem;
+            color: var(--accent-color);
+            margin-bottom: 20px;
+        }
+
+        .contacts {
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+            flex-wrap: wrap;
+            margin-top: 20px;
+        }
+
+        .contact-item {
+            background: var(--card-bg);
+            padding: 8px 16px;
+            border-radius: 20px;
+            border: 1px solid var(--border-color);
+            font-size: 0.9rem;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        section {
+            margin-top: 40px;
+        }
+
+        .section-title {
+            font-size: 1.8rem;
+            margin-bottom: 20px;
+            border-bottom: 2px solid var(--accent-color);
+            display: inline-block;
+            padding-bottom: 5px;
+        }
+
+        .grid-2 {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 20px;
+        }
+
+        .card {
+            background: var(--card-bg);
+            border-radius: 12px;
+            padding: 24px;
+            border: 1px solid var(--border-color);
+            transition: transform 0.2s, box-shadow 0.2s;
+        }
+
+        .card:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 10px 20px rgba(0,0,0,0.3);
+        }
+
+        .card-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-start;
+            margin-bottom: 12px;
+        }
+
+        .card-date {
+            font-size: 0.85rem;
+            color: var(--accent-color);
+            background: rgba(56, 189, 248, 0.1);
+            padding: 4px 10px;
+            border-radius: 12px;
+            font-weight: 600;
+        }
+
+        .card h3 {
+            font-size: 1.2rem;
+            margin-bottom: 8px;
+        }
+
+        .card-org {
+            color: var(--text-muted);
+            font-size: 0.95rem;
+            margin-bottom: 12px;
+        }
+
+        .card-role {
+            font-size: 0.9rem;
+            color: #e2e8f0;
+            margin-bottom: 8px;
+        }
+
+        .badge {
+            display: inline-block;
+            padding: 4px 8px;
+            border-radius: 6px;
+            font-size: 0.8rem;
+            font-weight: bold;
+            margin-top: 5px;
+        }
+
+        .badge-winner {
+            background-color: rgba(234, 179, 8, 0.2);
+            color: #fde047;
+            border: 1px solid rgba(234, 179, 8, 0.4);
+        }
+
+        .badge-prize {
+            background-color: rgba(168, 85, 247, 0.2);
+            color: #c084fc;
+            border: 1px solid rgba(168, 85, 247, 0.4);
+        }
+
+        ul.achievement-list {
+            list-style-type: none;
+            margin-top: 10px;
+        }
+
+        ul.achievement-list li {
+            position: relative;
+            padding-left: 20px;
+            margin-bottom: 6px;
+            font-size: 0.9rem;
+        }
+
+        ul.achievement-list li::before {
+            content: "▹";
+            position: absolute;
+            left: 0;
+            color: var(--accent-color);
+        }
+
+        .drive-folder-links {
+            display: flex;
+            gap: 15px;
+            flex-wrap: wrap;
+            margin-top: 15px;
+        }
+
+        .drive-btn {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            background: var(--card-bg);
+            border: 1px solid var(--border-color);
+            padding: 12px 20px;
+            border-radius: 8px;
+            color: #fff;
+            text-decoration: none;
+            transition: all 0.2s;
+        }
+
+        .drive-btn:hover {
+            border-color: var(--accent-color);
+            background: #243347;
+            color: var(--accent-color);
+        }
+
+        @media (max-width: 768px) {
+            .profile-title { font-size: 1.8rem; }
+            .grid-2 { grid-template-columns: 1fr; }
+            .profile-avatar { width: 120px; height: 120px; }
+        }
+    </style>
+</head>
+<body>
+
+    <header>
+        <div class="container">
+            <!-- Блок фотографии -->
+            <img src="photo.jpg" alt="Клепов Данил" class="profile-avatar">
+            
+            <h1 class="profile-title">Клепов Данил Алексеевич</h1>
+            <p class="profile-subtitle">Инженер-конструктор • Наставник</p>
+            <p class="subtitle">Классическое резюме с портфолио - <a href="https://docs.google.com/document/d/1X4xWE6sqZ9euNulOPr5rFvpAkKih4frhvRk2F1bSHMM/edit?tab=t.0" target="_blank">здесь</a></div>
+
+            <p style="color: var(--text-muted);">19 лет, г. Екатеринбург</p>
+            
+            <div class="contacts">
+                <div class="contact-item"><i class="fas fa-phone"></i> +7 (912) 243-52-72</div>
+                <div class="contact-item"><i class="fas fa-envelope"></i> <a href="mailto:itsoktofly7@gmail.com">itsoktofly7@gmail.com</a></div>
+                <div class="contact-item"><i class="fab fa-vk"></i> <a href="https://vk.com/idklepov" target="_blank">vk.com/idklepov</a></div>
+                <div class="contact-item"><i class="fab fa-telegram"></i> <a href="https://t.me/fiercespore" target="_blank">@fiercespore</a></div>
+            </div>
+        </div>
+    </header>
+
+    <main class="container">
+
+        <!-- ОБРАЗОВАНИЕ И РАБОТА -->
+        <section>
+            <div class="grid-2">
+                <div>
+                    <h2 class="section-title"><i class="fas fa-graduation-cap"></i> Образование</h2>
+                    
+                    <div class="card" style="margin-bottom: 15px;">
+                        <div class="card-header">
+                            <h3>УрФУ УПИШ</h3>
+                            <span class="card-date">09.2025 - н.в.</span>
+                        </div>
+                        <p class="card-role">15.03.04 Автоматизация технологических процессов и производств</p>
+                    </div>
+
+                    <div class="card" style="margin-bottom: 15px;">
+                        <div class="card-header">
+                            <h3>АНО “Университет 2035”</h3>
+                            <span class="card-date">2026</span>
+                        </div>
+                        <p class="card-role">Оператор беспилотных авиационных систем (&le; 30 кг)</p>
+                        <a href="https://drive.google.com/file/d/1vuGUU85ghB6WSLZCIP1dKZjGoEFS7MMH/view?usp=sharing" target="_blank" style="font-size: 0.85rem;"><i class="fas fa-certificate"></i> Подтверждающий документ</a>
+                    </div>
+
+                    <div class="card">
+                        <div class="card-header">
+                            <h3>МАОУ Гимназия №104</h3>
+                            <span class="card-date">2014 - 2025</span>
+                        </div>
+                        <p class="card-role">Красный аттестат о среднем общем образовании (мат-инф)</p>
+                    </div>
+                </div>
+
+                <div>
+                    <h2 class="section-title"><i class="fas fa-briefcase"></i> Опыт работы</h2>
+                    
+                    <div class="card" style="margin-bottom: 15px;">
+                        <div class="card-header">
+                            <h3>Лаборант</h3>
+                            <span class="card-date">01.09.2025 - н.в.</span>
+                        </div>
+                        <p class="card-org">ГАНОУ СО Дворец Молодёжи (ДТ Кванториум)</p>
+                    </div>
+
+                    <div class="card" style="margin-bottom: 15px;">
+                        <div class="card-header">
+                            <h3>Техник</h3>
+                            <span class="card-date">18.08.2025 - н.в.</span>
+                        </div>
+                        <p class="card-org">ООО "СПК "Монолит"</p>
+                    </div>
+
+                    <div class="card" style="margin-bottom: 15px;">
+                        <div class="card-header">
+                            <h3>Вожатый / Аккомпаниатор</h3>
+                            <span class="card-date">2025 - 2026</span>
+                        </div>
+                        <p class="card-org">МАУ ДОЛ МАЯК</p>
+                    </div>
+
+                    <div class="card">
+                        <div class="card-header">
+                            <h3>Монтёр ЖД путей</h3>
+                            <span class="card-date">06.2025</span>
+                        </div>
+                        <p class="card-org">ООО "СПК "Монолит" (ПромСорт-Метиз и КЗТС)</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- ПРОЕКТНАЯ ДЕЯТЕЛЬНОСТЬ -->
+        <section>
+            <h2 class="section-title"><i class="fas fa-rocket"></i> Проектная деятельность</h2>
+            
+            <div class="grid-2">
+
+                <!-- Проект 1 -->
+                <div class="card">
+                    <div class="card-header">
+                        <h3>Автономное РТС для сбора плодов</h3>
+                        <span class="card-date">2026</span>
+                    </div>
+                    <p class="card-org">УПИШ УрФУ / Кванториум / РМК</p>
+                    <p class="card-role"><strong>Роль:</strong> Инженер-технолог, Тимлид</p>
+                    <ul class="achievement-list">
+                        <li>Разработан дрон и захватный механизм</li>
+                        <li>Создан веб-интерфейс управления</li>
+                        <li><a href="https://drive.google.com/file/d/1yAnjlibKMy-i2KxxFIP3Tm9ZEAx_B_rv/view?usp=sharing" target="_blank">1-е место</a> на Архипелаг-2026 («Аддитивная фабрика»)</li>
+                    </ul>
+                </div>
+
+                <!-- Проект 2 -->
+                <div class="card">
+                    <div class="card-header">
+                        <h3>Катер на воздушной подушке</h3>
+                        <span class="card-date">2026</span>
+                    </div>
+                    <p class="card-org">ООО “Ньюлинк” / Дворец Молодёжи / Минпром СО</p>
+                    <p class="card-role"><strong>Роль:</strong> Инженер-конструктор, пилот</p>
+                    <ul class="achievement-list">
+                        <li>Изготовлено 3 судна и комплект <a href="https://drive.google.com/file/d/1vDa_Co34ja5M7g6dzhCHK7hH8ztFf4j7/view?usp=sharing" target="_blank">КД</a></li>
+                        <li><a href="https://drive.google.com/file/d/1FYlOF0kBBUy9r9lcv7eU_kVhuPK_8Vc5/view?usp=sharing" target="_blank">1-е место</a> в гранд-финале «Кибердром» (конкурс «Формируем будущее»)</li>
+                    </ul>
+                </div>
+
+                <!-- Проект 3 -->
+                <div class="card">
+                    <div class="card-header">
+                        <h3>Боевые роботы (1.5кг / 10кг)</h3>
+                        <span class="card-date">2024 - 2026</span>
+                    </div>
+                    <p class="card-org">УПИШ УрФУ / Дворец Молодёжи</p>
+                    <p class="card-role"><strong>Роль:</strong> Капитан команды, Конструктор, Электронщик</p>
+                    <ul class="achievement-list">
+                        <li><a href="https://drive.google.com/file/d/1cjXPR0TegKNZqdmw0NZ3vv45r2UxYsps/view?usp=sharing" target="_blank">Лучший проект</a> УПИШ УрФУ 2025-2026 (получено финансирование)</li>
+                        <li><a href="https://drive.google.com/file/d/1rt42MlAM4hPXNEWWcJLj6Bg3F1GdHbIb/view?usp=sharing" target="_blank">2-е место</a> на боях роботов «Крашилово» (СПб)</li>
+                        <li>Участие в международной «Битве роботов»</li>
+                    </ul>
+                </div>
+
+                <!-- Проект 4 -->
+                <div class="card">
+                    <div class="card-header">
+                        <h3>Наноспутники и 3D-печать в стратосфере</h3>
+                        <span class="card-date">2023 - 2025</span>
+                    </div>
+                    <p class="card-org">Роскосмос / Стратонавтика / Спутникс</p>
+                    <p class="card-role"><strong>Роль:</strong> Инженер-конструктор, программист</p>
+                    <ul class="achievement-list">
+                        <li>Успешные стратосферные запуски спутников с <a href="https://drive.google.com/file/d/1-xg2ze_fo5MkBSDlc805tpyu3rNf9Ql1/view?usp=sharing" target="_blank">фотополимерной</a> и <a href="https://drive.google.com/file/d/1XrScnDuJAs3NPw26-VfcA5NJVLJI05Xu/view?usp=sharing" target="_blank">лазерной 3D-печатью</a></li>
+                        <li>Запуск наноспутника с АИС в «Сириусе»</li>
+                    </ul>
+                </div>
+
+                <!-- Проект 5 -->
+                <div class="card">
+                    <div class="card-header">
+                        <h3>Модификация самолета ЛМС-901 «БАЙКАЛ»</h3>
+                        <span class="card-date">2025</span>
+                    </div>
+                    <p class="card-org">АО “УЗГА”</p>
+                    <p class="card-role"><strong>Роль:</strong> Инженер-конструктор</p>
+                    <ul class="achievement-list">
+                        <li>Сельхоз-модификация для распыления веществ</li>
+                        <li><a href="https://drive.google.com/file/d/1vpFOl-TTAK3ewFHr_wYyvmw8t14miLZe/view?usp=sharing" target="_blank">Публикация научной статьи</a> в базе РИНЦ («Коняевские чтения»)</li>
+                    </ul>
+                </div>
+
+                <!-- Проект 6 -->
+                <div class="card">
+                    <div class="card-header">
+                        <h3>Эко-Энерджи (Биогазовая установка)</h3>
+                        <span class="card-date">2023 - 2024</span>
+                    </div>
+                    <p class="card-org">Сколтех / ППК РЭО / Дворец Молодёжи</p>
+                    <p class="card-role"><strong>Роль:</strong> Руководитель проекта, инженер</p>
+                    <ul class="achievement-list">
+                        <li>Защита проекта перед С. Кириенко в Артеке и главой ППК РЭО Д. Буцаевым</li>
+                        <li>Презентация на Иннопром-2024</li>
+                    </ul>
+                </div>
+
+            </div>
+        </section>
+
+        <!-- КОНКУРСЫ И НАГРАДЫ -->
+        <section>
+            <h2 class="section-title"><i class="fas fa-trophy"></i> Достижения и победы</h2>
+            
+            <div class="grid-2">
+                <div class="card">
+                    <h3>2026</h3>
+                    <ul class="achievement-list">
+                        <li><span class="badge badge-winner">1 место</span> Архипелаг 2026 («Аддитивная фабрика») — <a href="https://drive.google.com/file/d/1yAnjlibKMy-i2KxxFIP3Tm9ZEAx_B_rv/view?usp=sharing" target="_blank">Диплом</a></li>
+                        <li><span class="badge badge-prize">2 место</span> Архипелаг 2026 («3D-реинжиниринг БПЛА») — <a href="https://drive.google.com/file/d/1TT6IUY9Q196HPc7BkQOiqaPUoyVqZQ2k/view?usp=sharing" target="_blank">Диплом</a></li>
+                        <li><span class="badge badge-winner">Победитель</span> Лучший студент года УПИШ УрФУ — <a href="https://drive.google.com/file/d/1K2gnB8r28OEJQsMHZzMNRHcTm69BI9g-/view?usp=sharing" target="_blank">Диплом</a></li>
+                        <li><span class="badge badge-winner">Топ-185</span> Победитель проекта Сбер МАЯКИ — <a href="https://drive.google.com/file/d/1nt1NQOLV5ukX4DnLE_qwQKtqccBstdsl/view?usp=sharing" target="_blank">Сертификат</a></li>
+                        <li><span class="badge badge-prize">3 место</span> Всероссийский проект «Кибердром» — <a href="https://drive.google.com/file/d/1dVjz_ePFVMJ9NViN2D5qRAqylaLjyK42/view?usp=sharing" target="_blank">Диплом</a></li>
+                    </ul>
+                </div>
+
+                <div class="card">
+                    <h3>2024 - 2025</h3>
+                    <ul class="achievement-list">
+                        <li><span class="badge badge-winner">1 место</span> «Анатомия предмета» (2025) — <a href="https://drive.google.com/file/d/1BrWD9Mty2kluVmZY2KYiBTNYE2FW4NiS/view?usp=sharing" target="_blank">Диплом</a></li>
+                        <li><span class="badge badge-winner">1 место</span> «Перспектива 3Д» (2024) — <a href="https://drive.google.com/file/d/1sk6NEoA6f6_Gje5wMYueYMGm-d3GrVwH/view?usp=sharing" target="_blank">Диплом</a></li>
+                        <li><span class="badge badge-prize">Лауреат II ст.</span> «Большая перемена» (2024) — <a href="https://drive.google.com/file/d/1zsIJGD67J2qmt5YCpxa4kXjLI9zewio_/view?usp=sharing" target="_blank">Диплом</a></li>
+                        <li><span class="badge badge-prize">2 место</span> Хайтек.Юниоры (2025) — <a href="https://drive.google.com/file/d/1DEQjTWP6f41BFdLHJAtT7zT-ie9COe3T/view?usp=sharing" target="_blank">Диплом</a></li>
+                    </ul>
+                </div>
+
+                <div class="card">
+                    <h3>2022 - 2023</h3>
+                    <ul class="achievement-list">
+                        <li><span class="badge badge-winner">Лауреат</span> Премия губернатора Свердловской области (2023) — <a href="https://drive.google.com/file/d/1VOCzUvyemdaoSdaoZrlRSVKQke2tTF_a/view?usp=sharing" target="_blank">Диплом</a></li>
+                        <li><span class="badge badge-prize">Призер</span> Всероссийские «Большие вызовы» — <a href="https://drive.google.com/file/d/1qI28R8gAoKsL8whuWrLgv695s7-T_KM0/view?usp=sharing" target="_blank">Диплом</a></li>
+                        <li><span class="badge badge-winner">1 место</span> «City lazer map» (2022) — <a href="https://drive.google.com/file/d/1x36QySx8HHr28mrPiU-fi2OksZz_zuyq/view?usp=sharing" target="_blank">Диплом</a></li>
+                    </ul>
+                </div>
+            </div>
+        </section>
+
+        <!-- АРХИВ ДОКУМЕНТОВ -->
+        <section>
+            <h2 class="section-title"><i class="fas fa-folder-open"></i> Подтверждающие материалы (Google Drive)</h2>
+            <div class="drive-folder-links">
+                <a href="https://drive.google.com/drive/folders/1hmPQjzvenTB1VdZrFwL0fGo3wI4FoA8a?usp=sharing" target="_blank" class="drive-btn">
+                    <i class="fas fa-award fa-2x"></i>
+                    <div>
+                        <strong>Благодарственные письма</strong><br>
+                        <small>Просмотреть папку</small>
+                    </div>
+                </a>
+
+                <a href="https://drive.google.com/drive/folders/1wNAaeG8e2SIhUP2eWmkhaRX9gCk5MXeJ?usp=sharing" target="_blank" class="drive-btn">
+                    <i class="fas fa-medal fa-2x"></i>
+                    <div>
+                        <strong>Конкурсные дипломы</strong><br>
+                        <small>Просмотреть папку</small>
+                    </div>
+                </a>
+
+                <a href="https://drive.google.com/drive/folders/1xvKZkhFA_svdR4mHPHHu5Rt7pULsAJNl?usp=sharing" target="_blank" class="drive-btn">
+                    <i class="fas fa-project-diagram fa-2x"></i>
+                    <div>
+                        <strong>Проектные материалы</strong><br>
+                        <small>Просмотреть папку</small>
+                    </div>
+                </a>
+            </div>
+        </section>
+
+    </main>
+
+</body>
+</html>
